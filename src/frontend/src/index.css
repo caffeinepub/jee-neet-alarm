@@ -1,0 +1,159 @@
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0.13 0.02 240;
+    --foreground: 0.93 0.01 235;
+    --card: 0.22 0.03 235;
+    --card-foreground: 0.93 0.01 235;
+    --popover: 0.22 0.03 235;
+    --popover-foreground: 0.93 0.01 235;
+    --primary: 0.74 0.13 185;
+    --primary-foreground: 0.13 0.02 240;
+    --secondary: 0.27 0.03 225;
+    --secondary-foreground: 0.93 0.01 235;
+    --muted: 0.22 0.03 235;
+    --muted-foreground: 0.73 0.02 235;
+    --accent: 0.62 0.17 240;
+    --accent-foreground: 0.93 0.01 235;
+    --destructive: 0.63 0.22 25;
+    --destructive-foreground: 0.93 0.01 235;
+    --border: 0.3 0.03 225;
+    --input: 0.27 0.03 225;
+    --ring: 0.74 0.13 185;
+    --radius: 0.75rem;
+    --chart-1: 0.74 0.13 185;
+    --chart-2: 0.62 0.17 240;
+    --chart-3: 0.72 0.17 55;
+    --chart-4: 0.68 0.18 145;
+    --chart-5: 0.65 0.2 300;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: oklch(0.13 0.02 240);
+    min-height: 100vh;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px oklch(0.72 0.17 55 / 0.4), 0 0 60px
+      oklch(0.72 0.17 55 / 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 40px oklch(0.72 0.17 55 / 0.7), 0 0 100px
+      oklch(0.72 0.17 55 / 0.4);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-8px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes alarm-bg-pulse {
+  0%,
+  100% {
+    background-color: oklch(0.1 0.04 30);
+  }
+  50% {
+    background-color: oklch(0.15 0.06 30);
+  }
+}
+
+@keyframes ring-icon {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes success-pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1.2s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.animate-alarm-bg {
+  animation: alarm-bg-pulse 1s ease-in-out infinite;
+}
+
+.animate-ring-icon {
+  animation: ring-icon 0.5s ease-in-out infinite;
+}
+
+.animate-success-pop {
+  animation: success-pop 0.4s ease-out forwards;
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    oklch(0.22 0.03 235 / 0.9),
+    oklch(0.27 0.03 225 / 0.8)
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.3 0.03 225);
+}
